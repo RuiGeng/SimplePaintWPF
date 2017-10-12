@@ -1,0 +1,132 @@
+﻿<UserControl
+    x:Class="WpfApplication.LayerUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfApplication"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+
+    <UserControl.Resources />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="DrawGrid" Grid.Row="0">
+            <Image x:Name="ImageControl" Source="Resource/Windows.jpg" />
+            <Canvas x:Name="TopAnnotationLayer" Background="Transparent" />
+            <Canvas x:Name="AnnotationLayer" Background="Transparent" />
+            <Canvas x:Name="AnnotationControlLayer" Background="Transparent">
+                <ContentControl x:Name="AnnotationControl" Visibility="Hidden">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border
+                            Grid.Row="0"
+                            Grid.RowSpan="3"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Background="LightGray"
+                            BorderBrush="White"
+                            BorderThickness="5"
+                            CornerRadius="8" />
+
+                        <Label
+                            x:Name="AnnotationTitle"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="0,5,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            HorizontalContentAlignment="Center"
+                            Content="New Annotation"
+                            FontSize="14"
+                            Foreground="Black" />
+
+                        <TextBox
+                            x:Name="AnnotationTextBox"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Width="300"
+                            Height="100"
+                            Margin="5"
+                            AcceptsReturn="False"
+                            FontSize="14"
+                            Text=""
+                            TextWrapping="Wrap" />
+
+                        <Button
+                            x:Name="ApplyButton"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Width="100"
+                            Height="30"
+                            Margin="5,0,0,10"
+                            Click="ApplyButton_OnClick"
+                            Content="Apply"
+                            FontSize="14"
+                            FontWeight="Bold" />
+
+                        <Button
+                            x:Name="CancelButton"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="100"
+                            Height="30"
+                            Margin="0,0,5,10"
+                            Click="CancelButton_OnClick"
+                            Content="Cancel"
+                            FontSize="14"
+                            FontWeight="Bold" />
+                    </Grid>
+                </ContentControl>
+            </Canvas>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button
+                x:Name="SketchButton"
+                Grid.Column="0"
+                Click="SketchButton_OnClick"
+                Content="Sketch" />
+            <Button
+                x:Name="NotationButton"
+                Grid.Column="1"
+                Click="NotationButton_OnClick"
+                Content="Notation" />
+            <Button
+                x:Name="UndoButton"
+                Grid.Column="2"
+                Click="UndoButton_OnClick"
+                Content="Undo" />
+            <Button
+                x:Name="RedoButton"
+                Grid.Column="3"
+                Click="RedoButton_OnClick"
+                Content="Redo" />
+            <Button
+                x:Name="ClearButton"
+                Grid.Column="4"
+                Click="ClearButton_OnClick"
+                Content="Clear" />
+        </Grid>
+    </Grid>
+</UserControl>
